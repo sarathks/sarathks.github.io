@@ -1,0 +1,6 @@
+<div class="video-wrapper">
+	<p class = "video-header">{{movieGenre}}<p>
+	<div>
+  		<app-video-grid  *ngFor= " let movie of movieContent" class="video-column" [video]="movie"></app-video-grid>		
+	</div> 
+</div>

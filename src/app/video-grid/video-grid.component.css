@@ -1,0 +1,14 @@
+.video-thumbnail{
+	/*background-image: url("../../assets/poster2.jpg");*/
+	width: 100%;
+    height: auto;
+    min-height: 25vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.video-name{
+	    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
