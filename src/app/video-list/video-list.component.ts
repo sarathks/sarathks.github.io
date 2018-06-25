@@ -13,11 +13,16 @@ export class VideoListComponent implements OnInit {
   public pageCount: number;
   public fullDataLoaded: boolean;
   public movieGenre : string;
+  public videoMode : boolean;
+  public searchText : string;
+  public searchContrents : any = [];
 
   constructor() { }
 
   ngOnInit() {
 
+    this.videoMode = true;
+    this.searchContrents = [];
     //scroll to top on reload the page
     window.onbeforeunload = function() {window.scrollTo(0,0);}
     this.pageCount = 1;
@@ -38,6 +43,26 @@ export class VideoListComponent implements OnInit {
         }
     };
 
+  }
+
+  searchVideos=()=> {
+    this.videoMode = false;
+  }
+
+  backToVideos=()=> {
+    this.videoMode = true;
+  }
+
+  searching=()=> {
+    this.searchContrents = [];
+    let chunk;
+    if(this.searchText){
+      Object.keys(this.fullData).forEach((key)=> {
+      chunk = (this.fullData[key]["page"]["content-items"]["content"]);
+      this.searchContrents = this.searchContrents.concat(chunk.filter(result => (result["name"].toLowerCase().indexOf(this.searchText.toLowerCase()) != -1)));
+    }); 
+    }
+    
   }
 
 }

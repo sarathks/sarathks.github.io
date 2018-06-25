@@ -15,7 +15,7 @@ export class VideoGridComponent implements OnInit {
 
   }
 
-  getBackground(image) {
+  getBackground = (image) => {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${image})`);
 }
 

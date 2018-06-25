@@ -1,6 +1,20 @@
 <div class="video-wrapper">
-	<p class = "video-header">{{movieGenre}}<p>
-	<div>
-  		<app-video-grid  *ngFor= " let movie of movieContent" class="video-column" [video]="movie"></app-video-grid>		
-	</div> 
+	<div >
+		<div class="video-header">
+			<span *ngIf="!videoMode" class = "video-search-back" (click) = "backToVideos()" ></span>
+			<span *ngIf="videoMode" class = "video-header-name">{{movieGenre}}</span>
+			<input *ngIf="!videoMode" [(ngModel)]="searchText"  type="" name="" class="video-search-bar" placeholder = "Search Videos" (ngModelChange)="searching()" >
+			<span class = "video-search" (click) = "searchVideos()" ></span>
+		</div>
+
+		<div *ngIf="videoMode" >
+	  		<app-video-grid  *ngFor= " let movie of movieContent" class="video-column" [video]="movie"></app-video-grid>		
+		</div> 
+	</div>
+	<div class="search-results">
+		<div>
+	  		<app-video-grid  *ngFor= " let movie of searchContrents" class="video-column" [video]="movie"></app-video-grid>		
+		</div> 
+	</div>
+	
 </div>
